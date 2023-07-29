@@ -5,8 +5,8 @@ const refs = {
 
 refs.inputEl.addEventListener("input", onInputUser);
 function onInputUser(evt) {
-  console.dir(evt.currentTarget.value);
-  if (evt.currentTarget.value === "") {
+  // console.dir(evt.currentTarget.value.trim());
+  if (evt.currentTarget.value.trim() === "") {
     refs.spanEl.textContent = "Anonymous";
   } else {
     refs.spanEl.textContent = evt.currentTarget.value;
