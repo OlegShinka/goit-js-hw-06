@@ -33,7 +33,9 @@ function createDiv(inputVal) {
       arrDiv.push(divEl);
     }
   }
+
   refs.boxEl.append(...arrDiv);
+  arrDiv.splice(0, arrDiv.length);
 }
 
 function onInputAmount(evt) {
