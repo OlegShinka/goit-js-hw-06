@@ -13,34 +13,38 @@ const refs = {
 
 refs.inputEl.addEventListener("input", onInputAmount);
 refs.btnCreate.addEventListener("click", onClickCreateBox);
-// refs.btnDestroy.addEventListener("click", onClickDestroyBox);
+refs.btnDestroy.addEventListener("click", onClickDestroyBox);
+
 let inputVal;
 const arrDiv = [];
-function createDiv(amount) {
-  for (let i = 0; i < amount; i += 1) {
-    const divEl = document.createElement("div");
+function createDiv(inputVal) {
+  if (inputVal >= 1 && inputVal <= 100) {
     let widthDiv = 30;
     let heightDiv = 30;
-    for (let j = 0; j < amount; j += 1) {
-      divEl.style.width = +`${widthDiv}px`;
-      divEl.style.height = +`${heightDiv}px`;
-      divEl.style.backgroundColor = "tomato";
-    }
+    for (let i = 0; i < inputVal; i += 1) {
+      const divEl = document.createElement("div");
+      widthDiv += 10;
+      heightDiv += 10;
+      divEl.style.width = `${widthDiv}px`;
+      divEl.style.height = `${heightDiv}px`;
+      divEl.style.backgroundColor = getRandomHexColor();
 
-    console.log(divEl);
-    arrDiv.push(divEl);
+      console.log(divEl);
+      arrDiv.push(divEl);
+    }
   }
   refs.boxEl.append(...arrDiv);
-  // return arrDiv;
 }
 
 function onInputAmount(evt) {
   evt.preventDefault();
   inputVal = evt.currentTarget.value;
-  console.log(inputVal);
   return inputVal;
 }
 
 function onClickCreateBox() {
   createDiv(inputVal);
+}
+function onClickDestroyBox() {
+  refs.boxEl.innerHTML = "";
 }
